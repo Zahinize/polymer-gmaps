@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html>
+<head>
+  <script src="assets/js/pace.min.js"></script>
+  <link rel="stylesheet" href="assets/css/pace.css">
+
+  <title>PolymerGoogleMapsApp</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+
+  <link rel="import" href="bower_components/core-field/core-field.html">
+  <link rel="import" href="bower_components/core-icon/core-icon.html">
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-icons/maps-icons.html">
+  <link rel="import" href="bower_components/core-item/core-item.html">
+  <link rel="import" href="bower_components/core-selector/core-selector.html">
+  <link rel="import" href="bower_components/paper-slider/paper-slider.html">
+
+  <link rel="import" href="bower_components/font-roboto/roboto.html">
+  <link rel="import" href="bower_components/google-map/google-map.html">
+  <link rel="import" href="bower_components/google-map/google-map-directions.html">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <template is="auto-binding">
+
+    <google-map map="{{map}}" latitude="37.779" longitude="-122.3892" zoom="{{range}}" disableDefaultUI>
+
+      <google-map-marker latitude="37.779" longitude="-122.3892" title="Map marker!"
+        draggable="true"></google-map-marker>
+
+    </google-map>
+    <google-map-directions travelMode="{{travelMode.label}}" map="{{map}}" startAddress="{{start}}" endAddress="{{end}}">
+    </google-map-directions>
+
+    <div id="inputs">
+      <core-field>
+        <core-icon icon="icons:search"></core-icon>
+        <input id="startAddress" placeholder="Start address" value="{{start}}">
+      </core-field>
+      <core-field>
+        <core-icon icon="icons:search"></core-icon>
+        <input id="endAddress" placeholder="End address" value="{{end}}">
+      </core-field>
+
+      <core-selector selected="0" selectedItem="{{travelMode}}" layout horizontal>
+        <core-item icon="maps:directions-car" label="DRIVING"></core-item>
+        <core-item icon="maps:directions-walk" label="WALKING"></core-item>
+        <core-item icon="maps:directions-bike" label="BICYCLING"></core-item>
+        <core-item icon="maps:directions-transit" label="TRANSIT"></core-item>
+      </core-selector>
+    </div>
+
+    <paper-slider min="5" value="{{range}}" max="15" ></paper-slider>
+
+  </template>
+
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
